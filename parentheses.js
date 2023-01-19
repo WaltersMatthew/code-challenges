@@ -49,3 +49,27 @@ var ValidParens = function (s) {
     return stacker.length ? false : true;
 };
 console.log(ValidParens("(){}[]"));
+
+//Kheff solve
+
+const validParentheses = (str) => {
+    const obj = {
+        "{": "}",
+        "[": "]",
+        "(": ")",
+    };
+
+    const arr = [];
+
+    for (let i = 0; i < str.length; i++) {
+        if (obj[str[i]]) {
+            arr.push(str[i]);
+        } else {
+            if (obj[arr.pop()] !== str[i]) {
+                return false;
+            }
+        }
+    }
+
+    return !arr.length;
+};
